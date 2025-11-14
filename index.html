@@ -1,0 +1,1834 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>MISS BEE DESIGN SRL • Atelier de confecții și design vestimentar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #050608;
+            --bg-elevated: #111217;
+            --bg-soft: #1b1d24;
+            --accent: #ff6a1a;
+            --accent-soft: rgba(255, 106, 26, 0.15);
+            --text-main: #f5f5f7;
+            --text-muted: #a0a2ad;
+            --radius-xl: 32px;
+            --radius-lg: 24px;
+            --radius-md: 18px;
+            --radius-pill: 999px;
+            --shadow-soft: 0 32px 80px rgba(0, 0, 0, 0.65);
+            --transition-fast: 0.25s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: radial-gradient(circle at top left, #262633 0, #050608 52%, #050608 100%);
+            color: var(--text-main);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 24px 12px;
+        }
+
+        .page-shell {
+            max-width: 1160px;
+            width: 100%;
+            border-radius: 40px;
+            background: radial-gradient(circle at top, #1b1d24 0, #050608 40%, #050608 100%);
+            box-shadow: var(--shadow-soft);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .page-shell::before {
+            content: "";
+            position: absolute;
+            inset: -120px;
+            background-image: url("https://images.pexels.com/photos/6311606/pexels-photo-6311606.jpeg?auto=compress&cs=tinysrgb&w=1600");
+            background-size: cover;
+            background-position: center center;
+            opacity: 0.22;
+            filter: saturate(1.1) contrast(1.05) blur(1px);
+            z-index: -1;
+        }
+
+        .inner-wrap {
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 30;
+            backdrop-filter: blur(22px);
+            background: rgba(7, 8, 12, 0.82);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .header-row {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 16px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .brand-mark {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-logo {
+            width: 32px;
+            height: 32px;
+            border-radius: 14px;
+            background: radial-gradient(circle at 20% 0, #ffb457 0, #ff6a1a 40%, #912600 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            color: #050608;
+        }
+
+        .brand-text-main {
+            font-family: "Poppins", system-ui, sans-serif;
+            font-size: 17px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .brand-text-sub {
+            font-size: 11px;
+            letter-spacing: 0.16em;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        nav {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            gap: 22px;
+            font-size: 13px;
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
+            transition: color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+        }
+
+        .nav-link:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-1px);
+        }
+
+        .nav-link.active {
+            color: #ffffff;
+            border-color: var(--accent);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 5px 12px;
+            border-radius: var(--radius-pill);
+            background: rgba(14, 204, 120, 0.12);
+            border: 1px solid rgba(14, 204, 120, 0.6);
+            font-size: 11px;
+            color: #b6f4d4;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 999px;
+            background: #0ecc78;
+        }
+
+        .btn-header {
+            border-radius: 999px;
+            padding: 8px 14px;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            background: rgba(11, 12, 19, 0.9);
+            color: var(--text-main);
+            font-size: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+        }
+
+        .btn-header:hover {
+            background: rgba(255, 106, 26, 0.18);
+            border-color: var(--accent);
+            box-shadow: 0 14px 32px rgba(0, 0, 0, 0.6);
+            transform: translateY(-1px);
+        }
+
+        .btn-header span {
+            font-size: 14px;
+        }
+
+        main {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 34px 28px 40px 28px;
+        }
+
+        section {
+            padding: 48px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+            padding-bottom: 10px;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
+            gap: 30px;
+            padding-top: 16px;
+            padding-bottom: 64px;
+        }
+
+        .hero-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 18px;
+        }
+
+        .hero-kicker {
+            font-size: 12px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .hero-title {
+            font-family: "Poppins", system-ui, sans-serif;
+            font-size: 46px;
+            line-height: 1.02;
+        }
+
+        .hero-title span {
+            display: block;
+        }
+
+        .hero-title-accent {
+            font-size: 64px;
+            letter-spacing: 0.02em;
+        }
+
+        .hero-subtitle {
+            font-size: 15px;
+            color: var(--text-muted);
+            max-width: 420px;
+            line-height: 1.7;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 6px;
+        }
+
+        .btn-main {
+            border-radius: var(--radius-pill);
+            padding: 11px 22px;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent);
+            color: #050608;
+            font-weight: 600;
+            box-shadow: 0 18px 40px rgba(255, 106, 26, 0.55);
+            transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .btn-main:hover {
+            background: #ff8243;
+            transform: translateY(-1px);
+            box-shadow: 0 24px 54px rgba(255, 106, 26, 0.7);
+        }
+
+        .btn-ghost {
+            border-radius: var(--radius-pill);
+            padding: 9px 18px;
+            font-size: 13px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16, 17, 24, 0.9);
+            color: var(--text-main);
+            transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+        }
+
+        .btn-ghost:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: var(--accent-soft);
+            box-shadow: 0 16px 42px rgba(0, 0, 0, 0.7);
+            transform: translateY(-1px);
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .meta-pill {
+            padding: 6px 11px;
+            border-radius: var(--radius-pill);
+            background: rgba(255, 255, 255, 0.04);
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .hero-portrait {
+            width: 100%;
+            max-width: 360px;
+            border-radius: var(--radius-xl);
+            background-image: url("https://images.pexels.com/photos/7671166/pexels-photo-7671166.jpeg?auto=compress&cs=tinysrgb&w=1200");
+            background-size: cover;
+            background-position: center top;
+            box-shadow: 0 40px 90px rgba(0, 0, 0, 0.9);
+            aspect-ratio: 3/4;
+            position: relative;
+        }
+
+        .hero-portrait::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: linear-gradient(to top, rgba(5, 6, 8, 0.75), transparent 55%);
+        }
+
+        .hero-tag-card {
+            position: absolute;
+            right: -6px;
+            top: 18px;
+            padding: 10px 14px;
+            border-radius: 16px;
+            background: rgba(9, 10, 15, 0.96);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            max-width: 210px;
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .hero-tag-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            left: 6px;
+            bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .scroll-dot {
+            width: 26px;
+            height: 26px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.24);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(9, 10, 15, 0.9);
+            cursor: pointer;
+            transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .scroll-dot:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-1px);
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.7);
+        }
+
+        .section-head {
+            margin-bottom: 26px;
+            max-width: 620px;
+        }
+
+        .section-kicker {
+            font-size: 12px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-family: "Poppins", system-ui, sans-serif;
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .section-subtitle {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .about-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
+            gap: 30px;
+            align-items: start;
+        }
+
+        .about-text {
+            font-size: 14px;
+            color: #d7d8df;
+            line-height: 1.8;
+        }
+
+        .about-text p + p {
+            margin-top: 12px;
+        }
+
+        .about-card {
+            background: rgba(11, 12, 18, 0.96);
+            border-radius: var(--radius-lg);
+            padding: 18px 20px 18px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .about-card-title {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .about-metric-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .metric-badge {
+            flex: 1 1 120px;
+            border-radius: 18px;
+            padding: 10px 12px;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .metric-value {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .service-card {
+            background: rgba(11, 12, 18, 0.96);
+            border-radius: var(--radius-lg);
+            padding: 18px 18px 18px 18px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.8);
+            border-color: rgba(255, 106, 26, 0.7);
+            background: radial-gradient(circle at top left, rgba(255, 106, 26, 0.18), rgba(11, 12, 18, 0.96) 55%);
+        }
+
+        .service-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .service-title {
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .service-tagline {
+            font-size: 12px;
+            color: #f9f9fb;
+        }
+
+        .service-text {
+            font-size: 13px;
+            color: #d0d1da;
+            line-height: 1.6;
+        }
+
+        .service-gallery {
+            margin-top: 28px;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .gallery-tile {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            height: 150px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .gallery-tile::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(5, 6, 8, 0.8), transparent 60%);
+        }
+
+        .gallery-label {
+            position: absolute;
+            left: 14px;
+            bottom: 12px;
+            font-size: 12px;
+            color: #f5f5f7;
+            z-index: 2;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .benefit-card {
+            border-radius: var(--radius-lg);
+            padding: 18px 18px 18px 18px;
+            background: rgba(11, 12, 18, 0.96);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .benefit-label {
+            font-size: 12px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .benefit-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .benefit-text {
+            font-size: 13px;
+            color: #d1d2dc;
+            line-height: 1.6;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .process-card {
+            border-radius: 22px;
+            padding: 18px 16px 18px 16px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.02), rgba(7, 7, 11, 0.98));
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            position: relative;
+        }
+
+        .process-index {
+            width: 26px;
+            height: 26px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .process-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .process-text {
+            font-size: 13px;
+            color: #d2d3dd;
+            line-height: 1.6;
+        }
+
+        .process-arrow {
+            position: absolute;
+            right: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.25);
+        }
+
+        .process-card:last-child .process-arrow {
+            display: none;
+        }
+
+        .cta-band {
+            border-radius: var(--radius-xl);
+            padding: 26px 24px;
+            background: radial-gradient(circle at top left, rgba(255, 106, 26, 0.25), rgba(8, 9, 13, 0.96) 55%);
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
+            gap: 22px;
+            align-items: center;
+        }
+
+        .cta-title {
+            font-family: "Poppins", system-ui, sans-serif;
+            font-size: 22px;
+            margin-bottom: 6px;
+        }
+
+        .cta-text {
+            font-size: 14px;
+            color: #f3f3f6;
+            line-height: 1.7;
+        }
+
+        .cta-tagline {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            color: rgba(5, 6, 8, 0.9);
+            padding: 4px 9px;
+            border-radius: var(--radius-pill);
+            background: rgba(255, 255, 255, 0.8);
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .cta-right {
+            text-align: right;
+        }
+
+        .cta-note {
+            font-size: 11px;
+            color: #ffe5d4;
+            margin-top: 10px;
+        }
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+            gap: 22px;
+            align-items: start;
+        }
+
+        .contact-box {
+            background: rgba(11, 12, 18, 0.96);
+            border-radius: var(--radius-lg);
+            padding: 18px 18px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .contact-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--text-muted);
+        }
+
+        .contact-value {
+            margin-top: 8px;
+            font-size: 14px;
+            color: #f3f3f6;
+        }
+
+        .contact-value a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .contact-value a:hover {
+            text-decoration: underline;
+        }
+
+        .map-card {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(11, 12, 18, 0.96);
+        }
+
+        .map-visual {
+            height: 160px;
+            background-image: linear-gradient(135deg, #ff6a1a 0, #ffb457 30%, #3e2b40 70%, #050608 100%);
+            position: relative;
+        }
+
+        .map-caption {
+            position: absolute;
+            left: 16px;
+            bottom: 14px;
+            font-size: 12px;
+            color: #050608;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 5px 10px;
+            border-radius: 999px;
+        }
+
+        .map-footer {
+            padding: 10px 14px 12px 14px;
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        footer {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 0 28px 24px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+            font-size: 11px;
+            color: var(--text-muted);
+            flex-wrap: wrap;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(5, 6, 8, 0.82);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity var(--transition-fast), visibility var(--transition-fast);
+            z-index: 60;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .modal-card {
+            width: 100%;
+            max-width: 520px;
+            border-radius: 28px;
+            background: #0b0c11;
+            box-shadow: 0 32px 80px rgba(0, 0, 0, 0.9);
+            padding: 22px 22px 18px 22px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            right: 14px;
+            top: 14px;
+            width: 30px;
+            height: 30px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            background: rgba(13, 14, 20, 0.98);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 18px;
+            color: var(--text-main);
+            transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: var(--accent);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.9);
+            transform: translateY(-1px);
+        }
+
+        .modal-title {
+            font-family: "Poppins", system-ui, sans-serif;
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .modal-subtitle {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 18px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px 12px;
+            margin-bottom: 8px;
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            font-size: 13px;
+        }
+
+        .form-field-full {
+            grid-column: 1 / -1;
+        }
+
+        .field-label-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        .field-label {
+            font-size: 12px;
+            color: var(--text-main);
+        }
+
+        .field-helper {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .input-base,
+        .select-base,
+        .textarea-base {
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            background: rgba(7, 8, 12, 0.96);
+            color: var(--text-main);
+            font-size: 13px;
+            padding: 8px 11px;
+            outline: none;
+            font-family: inherit;
+            transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+        }
+
+        .input-base::placeholder,
+        .textarea-base::placeholder {
+            color: rgba(207, 209, 219, 0.6);
+        }
+
+        .input-base:focus,
+        .select-base:focus,
+        .textarea-base:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 1px rgba(255, 106, 26, 0.45);
+            background: rgba(7, 8, 12, 1);
+        }
+
+        .textarea-base {
+            min-height: 90px;
+            resize: vertical;
+        }
+
+        .form-footer {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .consent-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .consent-row input {
+            margin-top: 2px;
+        }
+
+        .submit-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .submit-note {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .btn-submit {
+            border-radius: var(--radius-pill);
+            padding: 9px 18px;
+            font-size: 13px;
+            border: none;
+            cursor: pointer;
+            background: var(--accent);
+            color: #050608;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            box-shadow: 0 20px 42px rgba(255, 106, 26, 0.8);
+            transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .btn-submit:hover {
+            background: #ff8243;
+            transform: translateY(-1px);
+            box-shadow: 0 26px 54px rgba(255, 106, 26, 0.9);
+        }
+
+        .btn-secondary {
+            border-radius: var(--radius-pill);
+            padding: 8px 16px;
+            font-size: 13px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            cursor: pointer;
+            background: rgba(12, 13, 19, 0.96);
+            color: var(--text-main);
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--accent-soft);
+            box-shadow: 0 20px 46px rgba(0, 0, 0, 0.9);
+            transform: translateY(-1px);
+        }
+
+        .modal-success-body {
+            font-size: 14px;
+            color: #e5e6ee;
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        .success-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border-radius: var(--radius-pill);
+            background: rgba(14, 204, 120, 0.12);
+            border: 1px solid rgba(14, 204, 120, 0.7);
+            font-size: 12px;
+            color: #b6f4d4;
+            margin-bottom: 8px;
+        }
+
+        .success-note {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .inline-error {
+            font-size: 11px;
+            color: #ffb3a2;
+            margin-top: 4px;
+        }
+
+        @media (max-width: 960px) {
+            body {
+                padding: 16px 8px;
+            }
+
+            .page-shell {
+                border-radius: 28px;
+            }
+
+            .header-row {
+                padding: 12px 18px;
+                flex-wrap: wrap;
+                gap: 14px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            main {
+                padding: 26px 18px 34px 18px;
+            }
+
+            .hero {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 26px;
+                padding-bottom: 44px;
+            }
+
+            .hero-title {
+                font-size: 38px;
+            }
+
+            .hero-title-accent {
+                font-size: 54px;
+            }
+
+            .hero-visual {
+                justify-content: flex-start;
+            }
+
+            .hero-portrait {
+                max-width: 320px;
+            }
+
+            .about-layout,
+            .services-grid,
+            .service-gallery,
+            .benefits-grid,
+            .process-grid,
+            .cta-band,
+            .contact-layout {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .cta-right {
+                text-align: left;
+            }
+
+            .contact-layout {
+                gap: 18px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero-actions {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .header-actions {
+                margin-left: auto;
+            }
+
+            .form-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            footer {
+                padding-inline: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-shell">
+        <div class="inner-wrap">
+            <header>
+                <div class="header-row">
+                    <div class="brand-mark">
+                        <div class="brand-logo">
+                            MB
+                        </div>
+                        <div>
+                            <div class="brand-text-main">
+                                Miss Bee Design
+                            </div>
+                            <div class="brand-text-sub">
+                                Atelier de confecții Constanța
+                            </div>
+                        </div>
+                    </div>
+                    <nav>
+                        <ul class="nav-list">
+                            <li><a href="#acasa" class="nav-link active">Acasă</a></li>
+                            <li><a href="#despre" class="nav-link">Despre atelier</a></li>
+                            <li><a href="#servicii" class="nav-link">Colecții & servicii</a></li>
+                            <li><a href="#avantaje" class="nav-link">De ce Miss Bee</a></li>
+                            <li><a href="#proces" class="nav-link">Procesul nostru</a></li>
+                            <li><a href="#contact" class="nav-link">Contact</a></li>
+                        </ul>
+                    </nav>
+                    <div class="header-actions">
+                        <div class="status-pill">
+                            <span class="status-dot"></span>
+                            Disponibil pentru proiecte fashion B2B
+                        </div>
+                        <button class="btn-header" type="button" data-open-contact>
+                            <span>Scrie-ne</span>
+                            ↗
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <main>
+                <section id="acasa" class="hero">
+                    <div class="hero-text">
+                        <p class="hero-kicker">
+                            Confecții la comandă • Constanța
+                        </p>
+                        <h1 class="hero-title">
+                            <span>Atelier de confecții</span>
+                            <span class="hero-title-accent">Miss Bee Design</span>
+                        </h1>
+                        <p class="hero-subtitle">
+                            MISS BEE DESIGN SRL transformă conceptele de brand în colecții purtabile, produse prin tehnici de croi și coasere atent controlate, pentru mărci care vor să se remarce prin detaliu și calitate constantă.
+                        </p>
+                        <div class="hero-actions">
+                            <button class="btn-main" type="button" data-open-contact>
+                                Programează o discuție
+                                →
+                            </button>
+                            <button class="btn-ghost" type="button" data-scroll-target="#servicii">
+                                Vezi ce putem realiza împreună
+                                ↓
+                            </button>
+                        </div>
+                        <div class="hero-meta">
+                            <span class="meta-pill">
+                                Serii mici și medii pentru branduri de îmbrăcăminte
+                            </span>
+                            <span class="meta-pill">
+                                Prototipare, eșantioane și producție în Constanța
+                            </span>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="hero-portrait"></div>
+                        <div class="hero-tag-card">
+                            <div class="hero-tag-title">
+                                Croitorie dedicată brandurilor moderne
+                            </div>
+                            <div>
+                                Dezvoltăm tipare, ajustăm linii de croi și testăm materiale astfel încât fiecare piesă să arate la fel pe umeraș, în studio foto și în garderoba clientului final.
+                            </div>
+                        </div>
+                        <div class="scroll-indicator">
+                            <button class="scroll-dot" type="button" data-scroll-target="#despre">
+                                ↓
+                            </button>
+                            <span>Derulează pentru a afla povestea atelierului</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="despre">
+                    <div class="section-head">
+                        <p class="section-kicker">
+                            Povestea din spatele acului
+                        </p>
+                        <h2 class="section-title">
+                            Cine este Miss Bee Design
+                        </h2>
+                        <p class="section-subtitle">
+                            Atelier de confecții care îmbină precizia producției industriale cu atenția la detaliu specifică unui studio de design vestimentar.
+                        </p>
+                    </div>
+                    <div class="about-layout">
+                        <div class="about-text">
+                            <p>
+                                MISS BEE DESIGN SRL este un atelier de confecții și design vestimentar localizat pe STR. DUILIU ZAMFIRESCU NR. 39B, în Constanța. Ne dedicăm brandurilor care au nevoie de parteneri flexibili pentru colecții capsulă, linii limitate sau proiecte pilot în zona apparel.
+                            </p>
+                            <p>
+                                Echipa noastră reunește modelieri, constructori de tipare, tehnicieni de croi și operatori de mașini de cusut care înțeleg atât limbajul creativ al designerilor, cât și constrângerile de producție ale unui lanț comercial.
+                            </p>
+                            <p>
+                                Lucrăm cu materiale variate – de la jersey și tricotaje fine, până la țesături structurate pentru outerwear – și adaptăm fluxul de lucru la cerințele fiecărui brand: serii mici premium, capsule sezoniere sau restock recurent pentru modele validate pe piață.
+                            </p>
+                            <p>
+                                Prototiparea și testele de conformitate sunt parte integrantă din proces. Înainte de a începe producția efectivă, ajustăm tiparele, analizăm comportamentul materialului și stabilim standarde clare de finisaj pentru a evita surprizele în livrare.
+                            </p>
+                            <p>
+                                Pentru partenerii noștri, suntem mai mult decât un simplu furnizor de confecții: suntem un atelier care traduce ideile creative în linii de produse repetabile, gata să intre în campanii online, pop-up store-uri sau colecții permanente.
+                            </p>
+                        </div>
+                        <div class="about-card">
+                            <div class="about-card-title">
+                                Cifre care spun povestea atelierului
+                            </div>
+                            <div class="about-metric-row">
+                                <div class="metric-badge">
+                                    <div class="metric-value">
+                                        12+
+                                    </div>
+                                    <div class="metric-label">
+                                        colecții dezvoltate anual pentru branduri independente
+                                    </div>
+                                </div>
+                                <div class="metric-badge">
+                                    <div class="metric-value">
+                                        50 - 500
+                                    </div>
+                                    <div class="metric-label">
+                                        bucăți per model, cu trasabilitate clară a fiecărei serii
+                                    </div>
+                                </div>
+                                <div class="metric-badge">
+                                    <div class="metric-value">
+                                        7
+                                    </div>
+                                    <div class="metric-label">
+                                        stații de lucru dedicate prototipării și eșantioanelor rapide
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="servicii">
+                    <div class="section-head">
+                        <p class="section-kicker">
+                            De la schiță la colecție
+                        </p>
+                        <h2 class="section-title">
+                            Servicii principale de confecții și design
+                        </h2>
+                        <p class="section-subtitle">
+                            Oferim un pachet complet pentru branduri de îmbrăcăminte care au nevoie de parteneri tehnici capabili să traducă moodboard-uri, fișe tehnice și crochiuri în produse gata de livrat.
+                        </p>
+                    </div>
+                    <div class="services-grid">
+                        <article class="service-card">
+                            <div class="service-icon">
+                                ✂
+                            </div>
+                            <h3 class="service-title">
+                                Dezvoltare de tipare și prototipare
+                            </h3>
+                            <p class="service-tagline">
+                                Transformăm ideile de design în tipare care funcționează în producție.
+                            </p>
+                            <p class="service-text">
+                                Pornim de la schițele tale sau de la un model existent și dezvoltăm tipare adaptate mărimilor vizate și materialelor alese. Ne asigurăm că liniile de croi respectă estetica brandului, dar și limitele tehnice ale materialului.
+                            </p>
+                            <p class="service-text">
+                                Realizăm prototipuri de atelier și probe pe manechin sau model real, astfel încât să ajustăm proporțiile, poziția cusăturilor și comportamentul piesei în mișcare înainte de lansarea seriei pilot.
+                            </p>
+                        </article>
+                        <article class="service-card">
+                            <div class="service-icon">
+                                🧵
+                            </div>
+                            <h3 class="service-title">
+                                Producție de serii mici și medii
+                            </h3>
+                            <p class="service-tagline">
+                                Linii de îmbrăcăminte pentru branduri agile și colecții capsulă.
+                            </p>
+                            <p class="service-text">
+                                Organizăm fluxuri de producție pentru volume cuprinse între câteva zeci și câteva sute de unități per model, fie în serii unice, fie în lansări repetate. Adaptăm setările și echipamentele astfel încât fiecare comandă să fie optimizată ca timp și cost.
+                            </p>
+                            <p class="service-text">
+                                Monitorizăm calitatea la fiecare etapă – de la tăiere și asamblare până la finisaje – și documentăm schimbările pentru a reproduce același nivel de execuție la comenzile viitoare.
+                            </p>
+                        </article>
+                        <article class="service-card">
+                            <div class="service-icon">
+                                🎨
+                            </div>
+                            <h3 class="service-title">
+                                Asistență de design și styling tehnic
+                            </h3>
+                            <p class="service-tagline">
+                                Echilibrăm creativitatea cu fezabilitatea tehnică.
+                            </p>
+                            <p class="service-text">
+                                Consiliem brandurile în alegerea materialelor, a detaliilor de construcție și a gamei de culori astfel încât colecția să fie coerentă și prietenoasă cu producția. Intervenim acolo unde anumite elemente decorative pot compromite confortul sau rezistența produsului.
+                            </p>
+                            <p class="service-text">
+                                Propunem alternative de finisaj, tipuri de cusături și inserții care păstrează identitatea vizuală a brandului, dar simplifică procesul de confecționare și asigură un ritm previzibil de livrare.
+                            </p>
+                        </article>
+                    </div>
+                    <div class="service-gallery">
+                        <div class="gallery-tile" style="background-image: url('https://images.pexels.com/photos/3738089/pexels-photo-3738089.jpeg?auto=compress&cs=tinysrgb&w=1200');">
+                            <div class="gallery-label">
+                                Suprafețe curate, linii grafice, culori controlate
+                            </div>
+                        </div>
+                        <div class="gallery-tile" style="background-image: url('https://images.pexels.com/photos/5836487/pexels-photo-5836487.jpeg?auto=compress&cs=tinysrgb&w=1200');">
+                            <div class="gallery-label">
+                                Probe de materiale și detalii de finisaj
+                            </div>
+                        </div>
+                        <div class="gallery-tile" style="background-image: url('https://images.pexels.com/photos/3736817/pexels-photo-3736817.jpeg?auto=compress&cs=tinysrgb&w=1200');">
+                            <div class="gallery-label">
+                                Colecții pregătite pentru studio foto sau retail
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="avantaje">
+                    <div class="section-head">
+                        <p class="section-kicker">
+                            De ce brandurile revin la noi
+                        </p>
+                        <h2 class="section-title">
+                            Avantajele colaborării cu MISS BEE DESIGN
+                        </h2>
+                        <p class="section-subtitle">
+                            Ne diferențiem prin felul în care ascultăm brandurile și transformăm feedback-ul în procese clare, repetabile, astfel încât fiecare colecție nouă să fie mai bine calibrată decât precedenta.
+                        </p>
+                    </div>
+                    <div class="benefits-grid">
+                        <div class="benefit-card">
+                            <div class="benefit-label">
+                                Specializare fashion
+                            </div>
+                            <div class="benefit-title">
+                                Atelier conceput pentru branduri, nu pentru producție anonimă
+                            </div>
+                            <p class="benefit-text">
+                                Lucrăm exclusiv cu mărci care își construiesc identitatea în jurul unor detalii bine definite: croi, texturi, combinații de culori. Asta înseamnă că înțelegem ritmul lansărilor de colecții, nevoia de storytelling vizual și presiunea campaniilor digitale care cer mostre rapid și livrări la termen.
+                            </p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-label">
+                                Control și transparență
+                            </div>
+                            <div class="benefit-title">
+                                Vizibilitate asupra fiecărei etape de confecționare
+                            </div>
+                            <p class="benefit-text">
+                                Comunicam constant cu partenerii noștri: trimitem actualizări foto cu prototipurile, marcăm clar fiecare modificare de tipar și oferim estimări realiste de timp pe baza fluxurilor deja testate. Brandurile știu în orice moment unde se află colecția lor în procesul de realizare.
+                            </p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-label">
+                                Flexibilitate inteligentă
+                            </div>
+                            <div class="benefit-title">
+                                Serii adaptate cererii, fără compromis de calitate
+                            </div>
+                            <p class="benefit-text">
+                                Putem produce serii mici pentru testarea pieței și crește ulterior volumul pentru modelele care performează, păstrând aceleași standarde de execuție. Această flexibilitate le permite brandurilor să își asume mai puțin risc de stoc și să experimenteze cu noi direcții creative.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="proces">
+                    <div class="section-head">
+                        <p class="section-kicker">
+                            De la idee la livrare
+                        </p>
+                        <h2 class="section-title">
+                            Cum arată procesul nostru de colaborare
+                        </h2>
+                        <p class="section-subtitle">
+                            Am creat un flux în trei etape care ține cont de ritmul brandurilor moderne: explorăm, construim și livrăm colecții gata să intre în campanii, magazin online sau showroom.
+                        </p>
+                    </div>
+                    <div class="process-grid">
+                        <div class="process-card">
+                            <div class="process-index">
+                                01
+                            </div>
+                            <div class="process-title">
+                                Brief creativ și analiză tehnică
+                            </div>
+                            <p class="process-text">
+                                Discutăm identitatea brandului, moodboard-ul colecției și canalele prin care produsele vor fi vândute. Evaluăm fișele tehnice existente, materialele dorite și profilul de client, apoi stabilim împreună numărul de modele, mărimile și termenele de livrare.
+                            </p>
+                            <div class="process-arrow">
+                                →
+                            </div>
+                        </div>
+                        <div class="process-card">
+                            <div class="process-index">
+                                02
+                            </div>
+                            <div class="process-title">
+                                Prototipare și serie pilot
+                            </div>
+                            <p class="process-text">
+                                Dezvoltăm tiparele și realizăm prototipuri pe care le testăm împreună cu echipa brandului. După feedback și ajustări, producem o serie pilot care permite verificarea fit-ului, a comportamentului materialului și a reacțiilor publicului înainte de comanda principală.
+                            </p>
+                            <div class="process-arrow">
+                                →
+                            </div>
+                        </div>
+                        <div class="process-card">
+                            <div class="process-index">
+                                03
+                            </div>
+                            <div class="process-title">
+                                Producție și pregătire pentru lansare
+                            </div>
+                            <p class="process-text">
+                                Odată confirmată seria pilot, trecem la producția completă, urmărind indicatori clari de calitate și termen. Organizăm livrările astfel încât brandul să poată planifica sesiuni foto, listări în shop și campanii în social media fără presiune suplimentară.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="contact">
+                    <div class="cta-band">
+                        <div>
+                            <div class="cta-tagline">
+                                Pregătești următoarea colecție?
+                            </div>
+                            <div class="cta-title">
+                                Spune-ne ce ai în minte, iar noi desenăm procesul de producție
+                            </div>
+                            <p class="cta-text">
+                                Fie că e vorba despre o linie completă de îmbrăcăminte sau despre câteva piese statement, trimite-ne câteva detalii despre proiect. Vom reveni cu întrebările potrivite și o propunere de colaborare adaptată ritmului brandului tău.
+                            </p>
+                        </div>
+                        <div class="cta-right">
+                            <button class="btn-main" type="button" data-open-contact>
+                                Deschide formularul de contact
+                                ↗
+                            </button>
+                            <p class="cta-note">
+                                Formularul de mai sus este destinat exclusiv comunicării legate de serviciile MISS BEE DESIGN SRL. Nu solicităm date care nu sunt relevante pentru inițierea unei colaborări profesionale.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="coordonate">
+                    <div class="section-head">
+                        <p class="section-kicker">
+                            Coordonate atelier
+                        </p>
+                        <h2 class="section-title">
+                            Unde ne poți găsi
+                        </h2>
+                        <p class="section-subtitle">
+                            Atelierul nostru din Constanța este punctul din care pleacă fiecare colecție semnată Miss Bee Design împreună cu brandurile partenere.
+                        </p>
+                    </div>
+                    <div class="contact-layout">
+                        <div class="contact-box">
+                            <div class="contact-label">
+                                Adresă atelier
+                            </div>
+                            <div class="contact-value">
+                                STR. DUILIU ZAMFIRESCU NR. 39B<br>
+                                900003 Constanța, România
+                            </div>
+                            <div style="margin-top: 14px;" class="contact-label">
+                                E-mail pentru colaborări
+                            </div>
+                            <div class="contact-value">
+                                <a href="mailto:info@missbeedesign.pro">info@missbeedesign.pro</a>
+                            </div>
+                            <div style="margin-top: 16px; font-size: 12px; color: var(--text-muted);">
+                                Pentru propuneri de proiecte, trimite-ne un mesaj prin formularul de contact sau direct pe e-mail, menționând tipul de colecție, termenul dorit și volumul estimat. Răspundem, de regulă, în maximum două zile lucrătoare.
+                            </div>
+                        </div>
+                        <div class="map-card">
+                            <div class="map-visual">
+                                <div class="map-caption">
+                                    Constanța • Cartier rezidențial, aproape de zona de retail
+                                </div>
+                            </div>
+                            <div class="map-footer">
+                                Atelierul este poziționat astfel încât să fie ușor accesibil pentru probe, sampling și întâlniri de lucru, păstrând în același timp un mediu liniștit pentru producție și testare de colecții.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <footer>
+                <div>
+                    © <span id="year">2025</span> MISS BEE DESIGN SRL. Toate drepturile rezervate.
+                </div>
+                <div class="footer-links">
+                    <a href="#acasa">Revenire sus</a>
+                    <span>|</span>
+                    <span>Website de prezentare realizat pentru parteneri B2B din industria fashion.</span>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="contact-modal" aria-hidden="true">
+        <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="contact-title">
+            <button class="modal-close" type="button" data-close-modal>
+                ×
+            </button>
+            <h2 class="modal-title" id="contact-title">
+                Trimite un brief pentru colecția ta
+            </h2>
+            <p class="modal-subtitle">
+                Spune-ne cine ești, ce tip de îmbrăcăminte dezvolți și în ce interval îți dorești producția. Vom folosi aceste informații doar pentru a-ți răspunde și pentru a contura o posibilă colaborare.
+            </p>
+            <form id="contact-form" novalidate>
+                <div class="form-grid">
+                    <div class="form-field">
+                        <div class="field-label-row">
+                            <label class="field-label" for="name">
+                                Nume și prenume
+                            </label>
+                            <span class="field-helper">
+                                obligatoriu
+                            </span>
+                        </div>
+                        <input class="input-base" type="text" id="name" name="name" required placeholder="Exemplu: Andreea Ionescu">
+                        <div class="inline-error" id="error-name"></div>
+                    </div>
+                    <div class="form-field">
+                        <div class="field-label-row">
+                            <label class="field-label" for="company">
+                                Brand / Companie
+                            </label>
+                            <span class="field-helper">
+                                opțional
+                            </span>
+                        </div>
+                        <input class="input-base" type="text" id="company" name="company" placeholder="Exemplu: Bee Urban Apparel">
+                        <div class="inline-error" id="error-company"></div>
+                    </div>
+                    <div class="form-field">
+                        <div class="field-label-row">
+                            <label class="field-label" for="email">
+                                Adresă de e-mail
+                            </label>
+                            <span class="field-helper">
+                                obligatoriu
+                            </span>
+                        </div>
+                        <input class="input-base" type="email" id="email" name="email" required placeholder="Exemplu: nume@brand.ro">
+                        <div class="inline-error" id="error-email"></div>
+                    </div>
+                    <div class="form-field">
+                        <div class="field-label-row">
+                            <label class="field-label" for="service">
+                                Tip de proiect
+                            </label>
+                            <span class="field-helper">
+                                alege o opțiune
+                            </span>
+                        </div>
+                        <select class="select-base" id="service" name="service" required>
+                            <option value="">Selectează</option>
+                            <option value="capsule">
+                                Colecție capsulă pentru lansare sezonieră
+                            </option>
+                            <option value="pilot">
+                                Serie pilot pentru testarea pieței
+                            </option>
+                            <option value="restock">
+                                Restock pentru modele existente
+                            </option>
+                            <option value="other">
+                                Alt tip de proiect apparel
+                            </option>
+                        </select>
+                        <div class="inline-error" id="error-service"></div>
+                    </div>
+                    <div class="form-field form-field-full">
+                        <div class="field-label-row">
+                            <label class="field-label" for="message">
+                                Descrierea proiectului
+                            </label>
+                            <span class="field-helper">
+                                câteva fraze sunt suficiente
+                            </span>
+                        </div>
+                        <textarea class="textarea-base" id="message" name="message" required placeholder="Spune-ne ce tip de produse ai în plan (de ex. tricouri, rochii, outerwear), volume aproximative și orice termene importante pentru campanii sau lansări."></textarea>
+                        <div class="inline-error" id="error-message"></div>
+                    </div>
+                </div>
+                <div class="form-footer">
+                    <label class="consent-row">
+                        <input type="checkbox" id="consent" name="consent" required>
+                        <span>
+                            Sunt de acord ca datele completate să fie folosite de MISS BEE DESIGN SRL exclusiv pentru a răspunde solicitării mele și pentru comunicări ulterioare legate de acest proiect de confecții.
+                        </span>
+                    </label>
+                    <div class="inline-error" id="error-consent"></div>
+                    <div class="submit-row">
+                        <p class="submit-note">
+                            Poți reveni oricând ulterior și să ne soliciți actualizarea sau ștergerea informațiilor trimise, printr-un mesaj la adresa oficială a atelierului.
+                        </p>
+                        <button class="btn-submit" type="submit">
+                            Trimite brief-ul
+                            ➜
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="success-modal" aria-hidden="true">
+        <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="success-title">
+            <button class="modal-close" type="button" data-close-modal>
+                ×
+            </button>
+            <div class="success-pill">
+                ✔ Mesaj înregistrat
+            </div>
+            <h2 class="modal-title" id="success-title">
+                Îți mulțumim pentru încredere
+            </h2>
+            <p class="modal-success-body">
+                Am primit detaliile despre colecția ta. Un membru al echipei MISS BEE DESIGN SRL va analiza informațiile și îți va răspunde pe e-mail cu întrebări suplimentare și o propunere de calendar pentru prototipare și producție.
+            </p>
+            <p class="success-note">
+                Acest mesaj de confirmare este informativ și nu reprezintă un acord comercial. Orice colaborare va fi stabilită ulterior, prin discuții directe și documente dedicate.
+            </p>
+            <div style="margin-top: 16px; display: flex; justify-content: flex-end; gap: 10px;">
+                <button class="btn-secondary" type="button" data-close-modal>
+                    Închide și revino la site
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const headerOffset = 80;
+        const navLinks = document.querySelectorAll(".nav-link");
+        const sections = document.querySelectorAll("main section[id]");
+        const scrollButtons = document.querySelectorAll("[data-scroll-target]");
+
+        function scrollWithOffset(selector) {
+            const target = document.querySelector(selector);
+            if (!target) {
+                return;
+            }
+            const elementPosition = target.getBoundingClientRect().top + window.scrollY;
+            const offsetPosition = elementPosition - headerOffset;
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth"
+            });
+        }
+
+        navLinks.forEach(function (link) {
+            link.addEventListener("click", function (event) {
+                event.preventDefault();
+                const targetId = link.getAttribute("href");
+                scrollWithOffset(targetId);
+            });
+        });
+
+        scrollButtons.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+                const targetId = btn.getAttribute("data-scroll-target");
+                scrollWithOffset(targetId);
+            });
+        });
+
+        window.addEventListener("scroll", function () {
+            let currentId = "";
+            sections.forEach(function (section) {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= headerOffset + 40 && rect.bottom >= headerOffset + 40) {
+                    currentId = "#" + section.id;
+                }
+            });
+            navLinks.forEach(function (link) {
+                if (link.getAttribute("href") === currentId) {
+                    link.classList.add("active");
+                } else {
+                    link.classList.remove("active");
+                }
+            });
+        });
+
+        const contactModal = document.getElementById("contact-modal");
+        const successModal = document.getElementById("success-modal");
+        const openContactButtons = document.querySelectorAll("[data-open-contact]");
+        const closeModalButtons = document.querySelectorAll("[data-close-modal]");
+        const contactForm = document.getElementById("contact-form");
+
+        function openModal(modal) {
+            if (!modal) {
+                return;
+            }
+            modal.classList.add("active");
+            modal.setAttribute("aria-hidden", "false");
+        }
+
+        function closeModal(modal) {
+            if (!modal) {
+                return;
+            }
+            modal.classList.remove("active");
+            modal.setAttribute("aria-hidden", "true");
+        }
+
+        openContactButtons.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+                openModal(contactModal);
+            });
+        });
+
+        closeModalButtons.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+                closeModal(contactModal);
+                closeModal(successModal);
+            });
+        });
+
+        [contactModal, successModal].forEach(function (overlay) {
+            overlay.addEventListener("click", function (event) {
+                if (event.target === overlay) {
+                    closeModal(overlay);
+                }
+            });
+        });
+
+        function clearErrors() {
+            document.querySelectorAll(".inline-error").forEach(function (el) {
+                el.textContent = "";
+            });
+        }
+
+        function validateForm() {
+            clearErrors();
+            let valid = true;
+            const name = document.getElementById("name");
+            const email = document.getElementById("email");
+            const service = document.getElementById("service");
+            const message = document.getElementById("message");
+            const consent = document.getElementById("consent");
+
+            if (!name.value.trim()) {
+                document.getElementById("error-name").textContent = "Te rugăm să completezi numele.";
+                valid = false;
+            }
+
+            if (!email.value.trim()) {
+                document.getElementById("error-email").textContent = "Te rugăm să adaugi o adresă de e-mail.";
+                valid = false;
+            } else if (!email.checkValidity()) {
+                document.getElementById("error-email").textContent = "Formatul adresei de e-mail nu pare valid.";
+                valid = false;
+            }
+
+            if (!service.value) {
+                document.getElementById("error-service").textContent = "Selectează tipul de proiect.";
+                valid = false;
+            }
+
+            if (!message.value.trim()) {
+                document.getElementById("error-message").textContent = "Scrie câteva detalii despre proiect.";
+                valid = false;
+            }
+
+            if (!consent.checked) {
+                document.getElementById("error-consent").textContent = "Avem nevoie de acordul tău pentru a folosi aceste date în scopul răspunsului.";
+                valid = false;
+            }
+
+            return valid;
+        }
+
+        contactForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+            if (!validateForm()) {
+                return;
+            }
+            contactForm.reset();
+            clearErrors();
+            closeModal(contactModal);
+            openModal(successModal);
+        });
+
+        const yearSpan = document.getElementById("year");
+        const now = new Date();
+        yearSpan.textContent = String(now.getFullYear());
+    </script>
+</body>
+</html>
